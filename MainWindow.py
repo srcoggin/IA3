@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from UI import Ui_Form
 from PyQt5.QtWidgets import *
 from Customers import Customers
+from Appointments import Appointments
 
 
 
@@ -15,10 +16,14 @@ class NewMainWindow():
         self.ui.setupUi(self.main_win)
         self.ui.stackedWidget.setCurrentWidget(self.ui.Home)
         self.CP = Customers(self.ui, self)
+        self.AP = Appointments(self.ui, self)
 
         #initialises the comboboxes
         self.ui.SearchCustomersComboBox.addItem(" ")
-        self.CP.InitialiseCombobox()
+        self.CP.InitialiseCPCombobox()
+
+        self.ui.SearchAppointmentComboBox.addItem(" ")
+        self.AP.InitialiseAPCombobox()
 
         #Home Page Buttons
         self.ui.CustomersButton_HomePage.clicked.connect(self.CustomerPage)
@@ -39,9 +44,10 @@ class NewMainWindow():
         #Appointment Page 1 Buttons
         self.ui.HomeButton_AppointmentsPage1.clicked.connect(self.HomePage)
         self.ui.CustomersButton_AppointmentsPage1.clicked.connect(self.CustomerPage)
-        #Appointment Page 1 - Page 2 Button Goes Here
+        self.ui.AddNewAppointmentPageButton_Appointment1Page.clicked.connect(self.Appointment2Page)
         self.ui.PetsButton_AppointmentsPage1.clicked.connect(self.PetsPage)
         self.ui.ExitButton_AppointmentsPage1.clicked.connect(self.Exit)
+        self.ui.SearchByCustomerButton.clicked.connect(self.AP.SearchByCustomer)
 
         #Appointment Page 2 Buttons
         self.ui.HomeButton_AppointmentsPage2.clicked.connect(self.HomePage)

@@ -24,7 +24,7 @@ Phone: {i["Phone"]}
 Address: {i["Address"]}
 ''')
             
-    def InitialiseCombobox(self):
+    def InitialiseCPCombobox(self):
         results = requests.get(f"http://localhost:8000/api/list_customers")
         data = results.json()
         for i in data["results"]:
